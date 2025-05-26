@@ -1,51 +1,56 @@
-<p align="center">
-  <img src="https://lf3-static.bytednsdoc.com/obj/eden-cn/nuhojubrps/banner.png" alt="BAGEL" width="480"/>
-</p>
 
-<p align="center">
-  <a href="https://bagel-ai.org/">
-    <img
-      src="https://img.shields.io/badge/BAGEL-Website-0A66C2?logo=safari&logoColor=white"
-      alt="BAGEL Website"
-    />
-  </a>
-  <a href="https://arxiv.org/abs/2505.14683">
-    <img
-      src="https://img.shields.io/badge/BAGEL-Paper-red?logo=arxiv&logoColor=red"
-      alt="BAGEL Paper on arXiv"
-    />
-  </a>
-  <a href="https://huggingface.co/ByteDance-Seed/BAGEL-7B-MoT">
-    <img 
-        src="https://img.shields.io/badge/BAGEL-Model-yellow?logo=huggingface&logoColor=yellow" 
-        alt="BAGEL Model"
-    />
-  </a>
-  <a href="https://demo.bagel-ai.org/">
-    <img
-      src="https://img.shields.io/badge/BAGEL-Demo-blue?logo=googleplay&logoColor=blue"
-      alt="BAGEL Demo"
-    />
-  </a>
-  <a href="https://huggingface.co/spaces/ByteDance-Seed/BAGEL">
-    <img 
-        src="https://img.shields.io/badge/BAGEL-Space-orange?logo=huggingface&logoColor=yellow" 
-        alt="BAGEL Model"
-    />
-  </a>
-  <a href="https://discord.gg/Z836xxzy">
-    <img
-      src="https://img.shields.io/badge/BAGEL-Discord-5865F2?logo=discord&logoColor=purple"
-      alt="BAGEL Discord"
-    />
-  </a>
-  <a href="mailto:bagel@bytedance.com">
-    <img
-      src="https://img.shields.io/badge/BAGEL-Email-D14836?logo=gmail&logoColor=red"
-      alt="BAGEL Email"
-    />
-  </a>
-</p>
+# Bagel (Fork)
+
+This is my fork of **Bagel**, set up to run on multi-gpu inside [runpod.io](https://runpod.io) pod using the custom image:
+
+```
+madiator2011/better-pytorch\:cuda12.4-torch2.6.0
+````
+
+> ⚠️ Make sure to open port `7860`.  
+> RunPod users: set **`7777,7680`** in the pod's port field, if you want to use gradio ui.
+
+I have specially compiled **FlashAttention** for this setup and provided an installation script in the [Installation Notebook](./install.ipynb).
+
+---
+
+## 🚀 Main Contribution
+
+- Added **multi-GPU support** in both [`app.py`](./app.py) and [`inference.ipynb`](./inference.ipynb).
+- With help from **Gemini 2.5**, the model now supports multi-GPU inference.
+
+---
+
+## ⚙️ Performance and System Requirements
+
+with A40x2 machine the model was taking 64GB and inference was around 2 minutes per image.  
+
+---
+
+## 📖 How to Use
+
+Inside your pod, download the [Raw Installation Notebook](https://raw.githubusercontent.com/simsim314/Bagel/refs/heads/main/install.ipynb):
+
+```bash
+wget https://raw.githubusercontent.com/simsim314/Bagel/refs/heads/main/install.ipynb
+````
+
+Run all commands inside the notebook.
+
+Then you can either:
+
+* Run the Jupyter notebook: [inference.ipynb](./inference.ipynb)
+
+* Or launch the Gradio UI [app.py](./app.py):
+
+  ```bash
+  python app.py
+  ```
+
+The rest should be self-explanatory.
+
+-------------------
+
 
 # Unified Model for Multimodal Understanding and Generation
 > [Chaorui Deng*](https://scholar.google.com/citations?hl=en&user=k0TWfBoAAAAJ), [Deyao Zhu*](https://tsutikgiau.github.io/), [Kunchang Li*](https://andy1621.github.io/), [Chenhui Gou*](https://www.linkedin.com/in/chenhui-gou-9201081a1/?originalSubdomain=au), [Feng Li*](https://fengli-ust.github.io/), [Zeyu Wang](https://zw615.github.io/), Shu Zhong, [Weihao Yu](https://whyu.me/), [Xiaonan Nie](https://codecaution.github.io/), [Ziang Song](https://www.linkedin.com/in/ziang-song-43b0ab8a/), Guang Shi :email: , [Haoqi Fan :tophat: ](https://haoqifan.github.io/)
